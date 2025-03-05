@@ -3,6 +3,8 @@ penta training classroom github tutorials
 
 A new project `banking-system` has been added to this repository. 
 Make sure you have a fresh copy of the remote repository on your local machine  
+
+open intellij/eclipse and open project > banking-system
 Work on your own branch by creating one 
 then make the necessary changes and commit them 
 Once committed, push your branch 
