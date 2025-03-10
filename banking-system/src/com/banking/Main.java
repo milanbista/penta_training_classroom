@@ -3,7 +3,7 @@ package com.banking;
 public class Main {
     public static void main(String[] args) {
 
-        DebitCardService debitCardService = new DebitCardService();
+        DebitCardService debitCardService = new DebitCardService(01 , 500);
         CreditCardService creditCardService = new CreditCardService();
 
         User user1 = new User((int) (Math.random() * 1000) + 345, "Sam");
@@ -15,6 +15,10 @@ public class Main {
 
         debitCardService.showDetails(user1.getUserId());
         creditCardService.showDetails(user1.getUserId());
+        debitCardService.deposit(1155, 200);
+        debitCardService.withdraw(1155, 100);
+        debitCardService.purchase(1155, 55);
+        debitCardService.balanceTransferToCreditCard(1155, 100);
 
         //nikita works on debit card
         // you need to work on DebitCardService

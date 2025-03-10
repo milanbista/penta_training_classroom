@@ -2,9 +2,16 @@ package com.banking;
 
 import java.util.List;
 
-public class DebitCardService implements Card {
+public class DebitCardService implements Card , DebitCard {
 
     private static final List<User> users = BankingDatabase.userdatabase;
+   private double balance;
+
+   public DebitCardService (int userId, double initialBalance){
+       this.balance = initialBalance;
+   }
+
+
 
     @Override
     public void showDetails(int userId) {
@@ -24,4 +31,49 @@ public class DebitCardService implements Card {
         }
     }
 
+    @Override
+    public void deposit(int userId, double amount) {
+       balance = balance + amount;
+        System.out.println("The deposited amount " + amount + "New debit balance:" + balance);
+    }
+
+    @Override
+    public double withdraw(int userId, double amount) {
+       if ( amount > balance){
+           System.out.println("Insufficient funds");
+       }else{
+           balance = balance - amount;
+           System.out.println("Withdraw amount : " + amount + "Remaining balance is " + balance);
+       }
+        return 0;
+    }
+
+    @Override
+    public double purchase(int userId, double amount) {
+        if ( amount > balance){
+            System.out.println("Insufficient funds");
+        }else{
+            balance = balance - amount;
+            System.out.println("Purchased amount: " + amount + "Remaining balance is " + balance);
+        }
+        return 0;
+    }
+
+    @Override
+    public boolean balanceTransferToCreditCard(int userId, double amount) {
+        if ( amount > balance){
+            System.out.println("Insufficient funds");
+        }else{
+            balance = balance - amount;
+            System.out.println("Transferred amount " + amount + " to Credit card");
+            System.out.println("New debit balance: " + balance);
+        }
+        return false;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
 }
+
+
